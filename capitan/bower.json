@@ -1,0 +1,33 @@
+{
+	"name": "download-builder",
+	"description": "Update and get new components for the capitan frameworks",
+	"author": "brandung GmbH & CO.KG (http://www.brandung.de)",
+	"private": true,
+	"devDependencies": {
+		"fe-workflow" : "https://github.com/brandung/capitan.git",
+		"bra_styleguide-widget": "https://github.com/brandung/bra_styleguide-widget.git"
+  	},
+	"ignore": [
+		"hbp",
+		".gitignore",
+		"LICENSE",
+		"README.md",
+		"grunt/*.js",
+		"grunt/systems",
+		"bower.json"
+	],
+	"exportsOverride": {
+		"fe-workflow": {
+			"/": "."
+		},
+		"comp_*": {
+			"src/component": "."
+		},
+		"bra_*": {
+			"../dist/js/libs/bra": "."
+		},
+		"*": {
+			"../dist/js/libs/vendor": "."
+		}
+	}
+}

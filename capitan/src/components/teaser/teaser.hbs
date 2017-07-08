@@ -1,0 +1,48 @@
+<!--
+ Capitan teaser.hbs v1.0.0
+
+ Copyright brandung GmbH & Co.KG
+ http://www.brandung.de/
+
+ Date: 2017-06-09
+ MIT License (MIT)
+ -->
+{{#ifCond modifier '==' 'flip-teaser'}}
+<div class="teaser {{class}}">
+	<div class="teaser--flip__item">
+		<div class="teaser--flip__front">
+			<div class="teaser__media">
+				<picture>
+					<img src="https://dummyimage.com/600x400/424242/969696" />
+				</picture>
+			</div>
+			<div class=="teaser__content">
+				<div class="teaser__text">
+					Lorem Ipsum ...
+				</div>
+			</div>
+		</div>
+		<div class="teaser--flip__back">
+			<div class=="teaser__content">
+				<div class="teaser__text">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+				</div>
+			</div>
+			<span href="#" class="util-icon--before util-icon--close"></span>
+		</div>
+	</div>
+</div>
+{{else}}
+<div class="teaser {{class}}">
+	<div class="teaser__media">
+		<picture>
+			<img src="https://dummyimage.com/600x400/424242/969696" />
+		</picture>
+	</div>
+	<div class=="teaser__content">
+		<div class="teaser__text">
+			Lorem Ipsum ...
+		</div>
+	</div>
+</div>
+{{/ifCond}}

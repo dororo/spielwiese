@@ -1,0 +1,28 @@
+{{!-- views/index.hbs --}}
+
+{{#> base title="Overview" }}
+
+	{{#*inline "main-block"}}
+
+		<main id="main" role="main">
+			<h2>Styleguide</h2>
+			<ul>
+				<li><a href="styleguide.html">Styleguide</a></li>
+			</ul>
+
+            {{!-- <@views --}}
+			<h2>Templates</h2>
+			<ul>
+				<li><a href="t001.html">t001.html</a></li>
+			</ul>
+			{{!-- views@> --}}
+
+        </main>
+
+	{{/inline}}
+
+	{{#*inline "footer-block"}}
+	{{!-- insert footer if needed --}}
+	{{/inline}}
+
+{{/base}}

@@ -1,0 +1,94 @@
+@charset "utf-8";
+/**
+ * Capitan teaser.scss v1.0.0
+ *
+ * Copyright brandung GmbH & Co.KG
+ * http://www.brandung.de/
+ *
+ * Date: 2017-06-09
+ * MIT License (MIT)
+ */
+
+@import '../../sass/partials/functions';
+@import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
+
+$component: 'teaser';
+
+// block
+%#{$component} {
+	@include clearfix();
+	max-width: 100%;
+	height: auto;
+	border: 1px solid #ccc;
+	margin-bottom: $grid-gutter-width;
+}
+
+
+// element
+.#{$component}__media {
+
+}
+
+.#{$component}__content {
+
+}
+
+.#{$component}__text {
+	padding: $grid-gutter-width;
+}
+
+
+
+// modifier
+.#{$component}--flip {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	transition: transform 0.4s ease-in-out;
+
+	&__front,
+	&__back {
+		width: 100%;
+		backface-visibility: hidden;
+	}
+
+	&__front {
+		background: color('white');
+		border: 1px solid #ccc;
+		cursor: pointer;
+	}
+
+	&__back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: color('ci');
+		transform: rotateY(180deg);
+		color: color('white');
+		box-shadow: 0px 0px 10px #000;
+	}
+
+	&.flipped {
+		transform: rotateY(180deg);
+		z-index: 1;
+	}
+
+	& [class*="util-icon"] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 10px;
+		text-decoration: none;
+		color: color('white');
+		cursor: pointer;
+	}
+}
+
+
+// component class selector
+.#{$component} {
+	@extend %#{$component};
+}

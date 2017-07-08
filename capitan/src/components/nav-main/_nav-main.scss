@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/**
+ * Capitan navigation.scss v1.0.0
+ *
+ * Copyright brandung GmbH & Co.KG
+ * http://www.brandung.de/
+ *
+ * Date: 2016-09-05
+ * MIT License (MIT)
+ */
+
+
+/* ==========================================================================
+   Main Navigation
+   ========================================================================== */
+
+$component: 'nav-main';
+
+// block
+%#{$component} {
+	@include clearfix();
+}
+
+
+// element
+
+
+// modifier
+
+
+// component class selector
+.#{$component} {
+	@extend %#{$component};
+}
