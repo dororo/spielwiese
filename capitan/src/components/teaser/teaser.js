@@ -21,7 +21,9 @@ Capitan.Component.teaser = function ($) {
 			defaults: {
 				componentSelector: '.teaser--flip',
 				pluginOptions: {
-					selectors: {},
+					selectors: {
+						close: 'util-icon--fa-var-close'
+					},
 					classes: {},
 					callbacks: {},
 					errorMessages: {}
@@ -38,11 +40,11 @@ Capitan.Component.teaser = function ($) {
 	 */
 	_.bindEvents = function (options) {
 
-		/*$('body').on('click', '.teaser--flip', function (event) {
+		$('body').on('click', '.teaser--flip', function (event) {
 			var $this = $(event.currentTarget);
 
 			_.toggle($this);
-		});*/
+		});
 
 		$('body').on('click', '.teaser--flip__front', function (event) {
 			var $this = $(event.currentTarget);
@@ -50,7 +52,7 @@ Capitan.Component.teaser = function ($) {
 			_.open($this);
 		});
 
-		$('body').on('click', '.util-icon--close', function (event) {
+		$('body').on('click', '.util-icon--fa-var-close', function (event) {
 			var $this = $(event.currentTarget);
 
 			_.close($this);
@@ -64,13 +66,15 @@ Capitan.Component.teaser = function ($) {
 	 * @object
 	 */
 	_.toggle = function (obj) {
-		if (obj.hasClass('util-icon--close') && obj.closest(_.defaults.componentSelector).hasClass('flipped')) {
-			obj.closest(_.defaults.componentSelector).removeClass('flipped');
-		}
-		else {
-			$('body').find('.flipped').removeClass('flipped');
-			obj.closest(_.defaults.componentSelector).addClass('flipped');
-		}
+		if (Capitan.Function.checkViewport() === true) {
+			if (obj.closest(_.defaults.componentSelector).hasClass('flipped')) {
+				obj.closest(_.defaults.componentSelector).removeClass('flipped');
+			}
+			else {
+				$('body').find('.flipped').removeClass('flipped');
+				obj.closest(_.defaults.componentSelector).addClass('flipped');
+			};
+		};
 	};
 
 
@@ -80,12 +84,14 @@ Capitan.Component.teaser = function ($) {
 	 * @object
 	 */
 	_.open = function (obj) {
-		if (!obj.closest(_.defaults.componentSelector).hasClass('flipped')) {
-			$('body').find('.flipped').removeClass('flipped');
-			obj.closest(_.defaults.componentSelector).addClass('flipped');
-		} else {
-			_.toggle(obj);
-		}
+		if (Capitan.Function.checkViewport() === false) {
+			if (!obj.closest(_.defaults.componentSelector).hasClass('flipped')) {
+				$('body').find('.flipped').removeClass('flipped');
+				obj.closest(_.defaults.componentSelector).addClass('flipped');
+			} else {
+				_.toggle(obj);
+			};
+		};
 	};
 
 	/**
@@ -94,9 +100,11 @@ Capitan.Component.teaser = function ($) {
 	 * @object
 	 */
 	_.close = function (obj) {
-		if (obj.closest(_.defaults.componentSelector).hasClass('flipped') && obj.find('util-icon--close')) {
-			obj.closest(_.defaults.componentSelector).removeClass('flipped');
-		}
+		if (Capitan.Function.checkViewport() === false) {
+			if (obj.closest(_.defaults.componentSelector).hasClass('flipped') && obj.find(_.defaults.pluginOptions.selectors.close)) {
+				obj.closest(_.defaults.componentSelector).removeClass('flipped');
+			};
+		};
 	};
 
 

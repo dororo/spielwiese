@@ -79,11 +79,13 @@ basket.require(
 					fetch: [
 						// <@bundle#before-render
 						Capitan.Vars.folderPath + 'js/util/console-polyfill.js',
+						Capitan.Vars.folderPath + 'js/handle/get-viewport-size.js',
 						Capitan.Vars.folderPath + 'js/util/inject-smartresize.js',
 						Capitan.Vars.folderPath + 'js/function/assert-breakpoint.js',
 						Capitan.Vars.folderPath + 'js/function/get-breakpoint.js',
 						Capitan.Vars.folderPath + 'js/function/get-orientation.js',
 						Capitan.Vars.folderPath + 'js/function/get-computed-style.js',
+						Capitan.Vars.folderPath + 'js/function/check-viewport.js',
 						Capitan.Vars.folderPath + 'js/util/set-breakpoints.js',
 						Capitan.Vars.folderPath + 'js/handle/set-event-class.js',
 						Capitan.Vars.folderPath + 'js/handle/resize-handler.js'
@@ -156,6 +158,13 @@ basket.require(
 					fetch: [
 						Capitan.Vars.folderPath + 'components/teaser/teaser.js',
 						Capitan.Vars.folderPath + 'components/teaser/teaser.css'
+					],
+					unique: '<@unique@>'
+				},
+				{
+					condition: $('.scroll-to'),
+					fetch: [
+						Capitan.Vars.folderPath + 'components/scroll-to/scroll-to.css'
 					],
 					unique: '<@unique@>'
 				}// <@newComponent@>

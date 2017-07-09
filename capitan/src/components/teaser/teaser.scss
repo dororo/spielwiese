@@ -77,8 +77,9 @@ $component: 'teaser';
 	}
 
 	& [class*="util-icon"] {
+		@include fontSizeREM(25);
 		position: absolute;
-		top: 0;
+		top: -8px;
 		right: 0;
 		margin: 10px;
 		text-decoration: none;
