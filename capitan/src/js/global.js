@@ -88,6 +88,7 @@ basket.require(
 						Capitan.Vars.folderPath + 'js/function/check-viewport.js',
 						Capitan.Vars.folderPath + 'js/util/set-breakpoints.js',
 						Capitan.Vars.folderPath + 'js/handle/set-event-class.js',
+						Capitan.Vars.folderPath + 'js/handle/smooth-scroll.js',
 						Capitan.Vars.folderPath + 'js/handle/resize-handler.js'
 						// bundle@>
 					],

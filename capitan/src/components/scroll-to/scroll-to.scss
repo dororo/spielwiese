@@ -1,0 +1,54 @@
+@charset "utf-8";
+/**
+ * Capitan scroll-to.scss v1.0.0
+ *
+ * Copyright brandung GmbH & Co.KG
+ * http://www.brandung.de/
+ *
+ * Date: 2017-07-09
+ * MIT License (MIT)
+ */
+
+@import '../../sass/partials/functions';
+@import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
+
+$component: 'scroll-to';
+
+// block
+%#{$component} {
+	@include font($ff-icon);
+	position: fixed;
+	bottom: $grid-gutter-width;
+	right: $grid-gutter-width;
+	height: 50px;
+	width: 50px;
+	background: color('ci');
+	border-radius: 5px;
+	color: color('white');
+	cursor: pointer;
+	z-index: 1;
+	box-shadow: 1px 1px 3px color('grey');
+
+	&:before {
+		@include fontSizeREM(30);
+		@include prefix(transform, translate3d(-50%, -50%, 0));
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -2px 0px 0;
+	}
+}
+
+
+// element
+
+
+// modifier
+
+
+
+// component class selector
+.#{$component} {
+	@extend %#{$component};
+}
