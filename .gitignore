@@ -87,3 +87,4 @@ Icon
 ._*
 
 ### Include custom ignores here ###
+!dist/fonts/
