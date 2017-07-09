@@ -87,4 +87,14 @@ Icon
 ._*
 
 ### Include custom ignores here ###
-!dist/fonts/
+!dist
+dist/*.xml
+dist/*.png
+dist/.htaccess
+dist/robots.txt
+dist/favicon.ico
+dist/components/
+dist/css/
+dist/img/
+dist/js/
+!dist/fonts/*
