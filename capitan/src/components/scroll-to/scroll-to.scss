@@ -38,6 +38,10 @@ $component: 'scroll-to';
 		left: 50%;
 		margin: -2px 0px 0;
 	}
+
+	&:hover {
+		background: color('ci-hover');
+	}
 }
 
 
