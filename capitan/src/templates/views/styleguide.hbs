@@ -10,7 +10,7 @@
 
 		<main id="main" role="main">
 			{{> button type="anker" text="Templates" url="/index.html" class="btn--block" }}
-			
+
 			<div data-role="sg" data-type="sg__section" data-name="1. Colors">
 				{{> colors }}
 			</div>
@@ -110,9 +110,23 @@
 					</div>
 
 				</div>
-				
+
 				<div data-role="sg" data-type="sg__component" data-name="Scroll-to">
 					{{> scroll-to }}
+				</div>
+
+				<div data-role="sg" data-type="sg__component" data-name="Fancybox">
+					<div class="row">
+						<div class="col-xs-12 col-md-4">
+							{{> fancybox }}
+						</div>
+						<div class="col-xs-12 col-md-4">
+							{{> fancybox }}
+						</div>
+						<div class="col-xs-12 col-md-4">
+							{{> fancybox }}
+						</div>
+					</div>
 				</div>
 				<!-- <@newComponent@> -->
 

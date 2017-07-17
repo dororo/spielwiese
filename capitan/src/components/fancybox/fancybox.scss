@@ -1,0 +1,107 @@
+@charset "utf-8";
+/**
+ * Capitan fancybox.scss v1.0.0
+ *
+ * Copyright brandung GmbH & Co.KG
+ * http://www.brandung.de/
+ *
+ * Date: 2017-07-16
+ * MIT License (MIT)
+ */
+@import '../../sass/partials/functions';
+@import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
+$component: 'fancybox'; // block
+
+%#{$component} {
+	@include clearfix();
+}
+// element
+
+.#{$component}-slide {
+	.#{$component}-image-wrap {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+		//padding: 20px;
+		border: 0;
+		z-index: 99995;
+		background: white;
+		cursor: default;
+		overflow: visible;
+		-webkit-transform-origin: top left;
+		transform-origin: top left;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+}
+
+.#{$component}-image {
+	padding: 20px;
+}
+
+.#{$component}-caption-wrap {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0 30px;
+	background: white;
+	pointer-events: none;
+	position: absolute;
+	direction: ltr;
+	z-index: 99997;
+	opacity: 1;
+	visibility: visible;
+	transition: none;
+	box-sizing: border-box;
+}
+
+.#{$component}-caption {
+	color: black;
+}
+
+.#{$component}-toolbar {
+	position: absolute;
+	direction: ltr;
+	z-index: 99997;
+	opacity: 1;
+	visibility: visible;
+	transition: none;
+	box-sizing: border-box;
+
+	.#{$component}-button {
+		display: inline-block;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		width: 44px;
+		height: 44px;
+		line-height: 44px;
+		text-align: center;
+		backgrund: transparent;
+		color: white;
+		border-radius: 0;
+		cursor: pointer;
+		vertical-align: top;
+		outline: none;
+		color: black;
+		background: white;
+
+		&:hover {
+			color: black;
+			background: white;
+		}
+
+		&--close {}
+	}
+}
+// modifier
+// component class selector
+
+.#{$component} {
+	@extend %#{$component};
+}

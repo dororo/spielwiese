@@ -168,6 +168,16 @@ basket.require(
 						Capitan.Vars.folderPath + 'components/scroll-to/scroll-to.css'
 					],
 					unique: '<@unique@>'
+				},
+				{
+					condition: $('.fancybox'),
+					fetch: [
+						Capitan.Vars.folderPath + 'js/libs/vendor/fancybox/jquery.fancybox.min.css',
+						Capitan.Vars.folderPath + 'js/libs/vendor/fancybox/jquery.fancybox.min.js',
+						Capitan.Vars.folderPath + 'components/fancybox/fancybox.js',
+						Capitan.Vars.folderPath + 'components/fancybox/fancybox.css'
+					],
+					unique: '<@unique@>'
 				}// <@newComponent@>
 			], true);
 		};
