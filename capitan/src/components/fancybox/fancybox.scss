@@ -24,7 +24,6 @@ $component: 'fancybox'; // block
 		top: 0;
 		left: 0;
 		margin: 0;
-		//padding: 20px;
 		border: 0;
 		z-index: 99995;
 		background: white;
@@ -43,8 +42,26 @@ $component: 'fancybox'; // block
 	padding: 20px;
 }
 
+.#{$component}-custom {
+	img {
+		max-width: 600px;
+	}
+}
+
+.custom-caption-wrap {
+	.custom-caption {
+		padding: 20px 0;
+	}
+
+	button {
+		position: absolute;
+		right: 20px;
+		bottom: 20px;
+	}
+}
+
 .#{$component}-caption-wrap {
-	bottom: 0;
+	bottom: -100px;
 	left: 0;
 	right: 0;
 	padding: 0 30px;

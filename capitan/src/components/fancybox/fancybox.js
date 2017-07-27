@@ -18,55 +18,45 @@ Capitan.Component.fancybox = function ($) {
 	//private functions / properties
 	var _ = {
 		defaults: {
-			componentSelector: '[data-fancybox="images"]',
+			componentSelector: '[data-fancybox]',
 			pluginOptions: {
-				lang : 'de',
-				toolbar: true,
+				lang: 'de',
+				toolbar: false,
 				arrows: false,
-				smallBtn: true,
+				smallBtn: false,
 				buttons: [
 					'close'
 				],
-				beforeLoad: function( instance, slide ) {
-					var cap = '<div class="fancybox-caption-wrap">' +
-						'<div class="fancybox-toolbar">' +
-							'<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}"></button>' +
-						'</div>' +
-						'<div class="fancybox-caption"></div>' +
-					'</div>';
-
- 					console.info( instance.$refs );
-					console.info( slide.opts.$orig );
-					console.log($(slide.$slide));
-					$(cap).appendTo('.fancybox-image-wrap');
-				},
-				baseTpl	:
-		'<div class="fancybox-container" role="dialog" tabindex="-1">' +
-			'<div class="fancybox-bg"></div>' +
-			'<div class="fancybox-inner">' +
-				'<div class="fancybox-infobar">' +
-					'<button data-fancybox-prev title="{{PREV}}" class="fancybox-button fancybox-button--left"></button>' +
-					'<div class="fancybox-infobar__body">' +
-						'<span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span>' +
-					'</div>' +
-					'<button data-fancybox-next title="{{NEXT}}" class="fancybox-button fancybox-button--right"></button>' +
-				'</div>' +
-				'<div class="fancybox-navigation">' +
-					'<button data-fancybox-prev title="{{PREV}}" class="fancybox-arrow fancybox-arrow--left" />' +
-					'<button data-fancybox-next title="{{NEXT}}" class="fancybox-arrow fancybox-arrow--right" />' +
-				'</div>' +
-				'<div class="fancybox-stage">'+
-					// '<div class="fancybox-caption-wrap">' +
-					// 	'<div class="fancybox-toolbar">' +
-					// 		'{{BUTTONS}}' +
-					// 	'</div>' +
-					// 	'<div class="fancybox-caption"></div>' +
-					// '</div>' +
-				'</div>' +
-			'</div>' +
-		'</div>',
+				animationEffect: 'fade',
+				animationDuration : 1000
+				// afterShow: function (instance, slide) {
+				// 	console.info(instance, slide);
+				//
+				// 	// Tip: Each event passes useful information within the event object:
+				//
+				// 	// Object containing references to interface elements
+				// 	// (background, buttons, caption, etc)
+				// 	console.info(instance.$refs);
+				//
+				// 	// Current slide options
+				// 	console.info(slide.opts);
+				//
+				// 	// Clicked element
+				// 	console.info(slide.opts.$orig);
+				//
+				// 	// Reference to DOM element of the slide
+				// 	console.info(slide.$slide);
+				// }
 			}
 		}
+	};
+
+	_.bindEvents = function (obj) {
+		Capitan.Vars.$doc.on('afterShow.fb', function (e, instance, slide) {
+			var caption = instance.$refs.caption[0].innerHTML;
+			var target = $(instance.$refs.stage[0]).find('.custom-caption');
+			$(target).html(caption);
+		});
 	};
 
 	/**
@@ -85,10 +75,12 @@ Capitan.Component.fancybox = function ($) {
 
 		//get component elements in context (whole document or just a fraction eg. ajax loaded content)
 		componentElements = $(initOptions.componentSelector, context ||  document);
-		console.log(initOptions.pluginOptions);
+		//console.log(initOptions.pluginOptions);
 
 		//init the plugin
 		componentElements.fancybox(initOptions.pluginOptions);
+
+		_.bindEvents();
 	};
 
 	return self;

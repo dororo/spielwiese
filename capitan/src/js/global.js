@@ -67,7 +67,8 @@ basket.require(
 		Capitan.Vars = $.extend(Capitan.Vars, {
 			$html: $('html'),
 			$window: $(window),
-			$doc: $(document)
+			$doc: $(document),
+			$body: $('body')
 		});
 
 		// Assets that are necessary globally and on every page, can and will be loaded here (DOM not ready)
