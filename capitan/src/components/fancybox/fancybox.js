@@ -28,7 +28,13 @@ Capitan.Component.fancybox = function ($) {
 					'close'
 				],
 				animationEffect: 'fade',
-				animationDuration : 1000
+				animationDuration: 1000,
+				image: {
+					// Wait for images to load before displaying
+					// Requires predefined image dimensions
+					// If 'auto' - will zoom in thumbnail if 'width' and 'height' attributes are found
+					preload: "auto",
+				},
 				// afterShow: function (instance, slide) {
 				// 	console.info(instance, slide);
 				//
@@ -52,10 +58,29 @@ Capitan.Component.fancybox = function ($) {
 	};
 
 	_.bindEvents = function (obj) {
-		Capitan.Vars.$doc.on('afterShow.fb', function (e, instance, slide) {
+		// onInit: $.noop, // When instance has been initialized
+		//
+		// beforeLoad: $.noop, // Before the content of a slide is being loaded
+		// afterLoad: $.noop, // When the content of a slide is done loading
+		//
+		// beforeShow: $.noop, // Before open animation starts
+		// afterShow: $.noop, // When content is done loading and animating
+		//
+		// beforeClose: $.noop, // Before the instance attempts to close. Return false to cancel the close.
+		// afterClose: $.noop, // After instance has been closed
+		//
+		// onActivate: $.noop, // When instance is brought to front
+		// onDeactivate: $.noop, // When other instance has been activated
+
+		Capitan.Vars.$doc.on('afterLoad.fb', function (e, instance, slide) {
+
 			var caption = instance.$refs.caption[0].innerHTML;
+			var image = slide.opts.$orig[0].innerHTML;
+			var customObj = $(instance.$refs.stage[0]).find('.fancybox-custom');
 			var target = $(instance.$refs.stage[0]).find('.custom-caption');
+			$(customObj).html(image);
 			$(target).html(caption);
+
 		});
 	};
 
