@@ -166,7 +166,8 @@ basket.require(
 				{
 					condition: $('.scroll-to'),
 					fetch: [
-						Capitan.Vars.folderPath + 'components/scroll-to/scroll-to.css'
+						Capitan.Vars.folderPath + 'components/scroll-to/scroll-to.css',
+						Capitan.Vars.folderPath + 'components/scroll-to/scroll-to.js'
 					],
 					unique: '<@unique@>'
 				},
