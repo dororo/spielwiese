@@ -180,6 +180,17 @@ basket.require(
 						Capitan.Vars.folderPath + 'components/fancybox/fancybox.css'
 					],
 					unique: '<@unique@>'
+				},
+				{
+					condition: $('.muuri'),
+					fetch: [
+						Capitan.Vars.folderPath + 'js/libs/vendor/velocity/velocity.min.js',
+						Capitan.Vars.folderPath + 'js/libs/vendor/hammer/hammer.min.js',
+						Capitan.Vars.folderPath + 'js/libs/vendor/muuri/muuri.min.js',
+						Capitan.Vars.folderPath + 'components/muuri/muuri.js',
+						Capitan.Vars.folderPath + 'components/muuri/muuri.css'
+					],
+					unique: '<@unique@>'
 				}// <@newComponent@>
 			], true);
 		};

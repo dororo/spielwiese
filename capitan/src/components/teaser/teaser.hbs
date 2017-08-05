@@ -35,9 +35,10 @@
 {{else}}
 <div class="teaser {{class}}">
 	<div class="teaser__media">
-		<picture>
-			<img src="https://dummyimage.com/600x400/424242/969696" />
-		</picture>
+		{{!-- {{> fancybox caption="Dummy" }} --}}
+		<a href="https://dummyimage.com/600x400/424242/969696" data-fancybox="lightbox" data-caption="{{caption}}">
+				<img src="https://dummyimage.com/600x400/424242/969696" />
+		</a>
 	</div>
 	<div class=="teaser__content">
 		<div class="teaser__text">

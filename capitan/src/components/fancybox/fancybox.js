@@ -1,5 +1,5 @@
 /*
- * Capitan formValidation v0.9.1
+ * Capitan fancybox v0.9.1
  *
  * Copyright brandung GmbH & Co.KG
  * http://www.Capitan.de/
@@ -10,76 +10,98 @@
 
 Capitan.Component.fancybox = function ($) {
 
-	// public methods / properties
-	var self = {
-		//...
-	};
+// public methods / properties
+var self = {
+	//...
+};
 
-	//private functions / properties
-	var _ = {
-		defaults: {
-			componentSelector: '[data-fancybox]',
-			pluginOptions: {
-				lang: 'de',
-				toolbar: false,
-				arrows: false,
-				smallBtn: false,
-				buttons: [
-					'close'
-				],
-				animationEffect: 'fade',
-				animationDuration: 1000,
-				image: {
-					// Wait for images to load before displaying
-					// Requires predefined image dimensions
-					// If 'auto' - will zoom in thumbnail if 'width' and 'height' attributes are found
-					preload: "auto",
-				},
-				// afterShow: function (instance, slide) {
-				// 	console.info(instance, slide);
-				//
-				// 	// Tip: Each event passes useful information within the event object:
-				//
-				// 	// Object containing references to interface elements
-				// 	// (background, buttons, caption, etc)
-				// 	console.info(instance.$refs);
-				//
-				// 	// Current slide options
-				// 	console.info(slide.opts);
-				//
-				// 	// Clicked element
-				// 	console.info(slide.opts.$orig);
-				//
-				// 	// Reference to DOM element of the slide
-				// 	console.info(slide.$slide);
-				// }
-			}
-		}
-	};
+//private functions / properties
+var _ = {
+	defaults: {
+		componentSelector: '[data-fancybox]',
+		pluginOptions: {
+			lang: 'de',
+			toolbar: false,
+			arrows: true,
+			smallBtn: false,
+			buttons: [
+				'slideShow',
+				'fullScreen',
+				'thumbs',
+				'close'
+			],
+			animationEffect: 'fade',
+			animationDuration: 700,
+			image: {
+				preload: "auto",
+			},
+			baseTpl: '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+				'<div class="fancybox-bg"></div>' +
+				'<div class="fancybox-inner">' +
+				'<div class="fancybox-infobar">' +
+				'<button data-fancybox-prev title="{{PREV}}" class="fancybox-button fancybox-button--left"></button>' +
+				'<div class="fancybox-infobar__body">' +
+				'<span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span>' +
+				'</div>' +
+				'<button data-fancybox-next title="{{NEXT}}" class="fancybox-button fancybox-button--right"></button>' +
+				'</div>' +
+				'<div class="fancybox-toolbar">' +
+				'{{BUTTONS}}' +
+				'</div>' +
+				'<div class="fancybox-navigation">' +
+				'<button data-fancybox-prev title="{{PREV}}" class="fancybox-arrow fancybox-arrow--left" />' +
+				'<button data-fancybox-next title="{{NEXT}}" class="fancybox-arrow fancybox-arrow--right" />' +
+				'</div>' +
+				'<div class="fancybox-stage"></div>' +
+				'<div class="fancybox-caption-wrap">' +
+				'<div class="fancybox-caption"></div>' +
+				'</div>' +
+				'</div>' +
+				'</div>'
+		},
+		customTpl: '<div class="fancybox-custom">' +
+			'<div class="custom-image">' +
+			'</div>' +
+			'<div class="custom-caption-wrap">' +
+			'<div class="custom-caption">' +
+			'</div>' +
+			'<button data-fancybox-close class="fancybox-button fancybox-button--close" title="CLOSE"></button>' +
+			'</div>' +
+			'</div>'
+	}
+};
 
-	_.bindEvents = function (obj) {
-		// onInit: $.noop, // When instance has been initialized
-		//
-		// beforeLoad: $.noop, // Before the content of a slide is being loaded
-		// afterLoad: $.noop, // When the content of a slide is done loading
-		//
-		// beforeShow: $.noop, // Before open animation starts
-		// afterShow: $.noop, // When content is done loading and animating
-		//
-		// beforeClose: $.noop, // Before the instance attempts to close. Return false to cancel the close.
-		// afterClose: $.noop, // After instance has been closed
-		//
-		// onActivate: $.noop, // When instance is brought to front
-		// onDeactivate: $.noop, // When other instance has been activated
+_.bindEvents = function (obj) {
 
-		Capitan.Vars.$doc.on('afterLoad.fb', function (e, instance, slide) {
+	// First clear preloaded Content
+	Capitan.Vars.$doc.on('afterLoad.fb', function (e, instance, slide) {
+		var stage = $(slide.$slide[0]);
+		$(stage).html('');
+		$(stage).find('.fancybox-stage').hide;
+	});
 
-			var caption = instance.$refs.caption[0].innerHTML;
-			var image = slide.opts.$orig[0].innerHTML;
-			var customObj = $(instance.$refs.stage[0]).find('.fancybox-custom');
-			var target = $(instance.$refs.stage[0]).find('.custom-caption');
-			$(customObj).html(image);
-			$(target).html(caption);
+	Capitan.Vars.$doc.on('afterShow.fb', function (e, instance, slide) {
+		var stage = $(slide.$slide[0]);
+
+		var caption = instance.$refs.caption[0].innerHTML;
+		var image = '<img src="' + slide.$image[0].currentSrc + '" />';
+
+		$(stage).html(_.defaults.customTpl);
+
+		var customObj = $(instance.$refs.stage[0]).find('.custom-image'); // Image holder
+		var target = $(instance.$refs.stage[0]).find('.custom-caption'); // Caption holder
+
+		$(customObj).html(image); // get image and paste it into customTemplate
+		$(target).html(caption); // take caption and paste it into customTemplate
+
+		// Inline Solution
+		// var caption = instance.$refs.caption[0].innerHTML;
+		// var image = slide.opts.$orig[0].innerHTML;
+		// var customObj = $(instance.$refs.stage[0]).find('.fancybox-custom');
+		// var target = $(instance.$refs.stage[0]).find('.custom-caption');
+		//
+		// $(customObj).html(image); // get image and paste it into custom inline-Template
+		// $(target).html(caption); // take caption and paste it into custom inline-Template
 
 		});
 	};
