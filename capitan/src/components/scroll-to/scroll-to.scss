@@ -18,7 +18,7 @@ $component: 'scroll-to';
 	@include prefix(transition, opacity .5s ease-in .3s);
 
 	position: fixed;
-	bottom: $grid-gutter-width;
+	bottom: 90px;
 	right: $grid-gutter-width;
 	height: 50px;
 	width: 50px;
@@ -32,6 +32,7 @@ $component: 'scroll-to';
 	&:before {
 		@include fontSizeREM(30);
 		@include prefix(transform, translate3d(-50%, -50%, 0));
+		content: icon('fa-var-chevron-up');
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -53,7 +54,33 @@ $component: 'scroll-to';
 	}
 }
 // element
+
+
 // modifier
+.#{$component}--down {
+	position: fixed;
+	bottom: 26px;
+	right: $grid-gutter-width;
+	height: 50px;
+	width: 50px;
+	background: color('ci');
+	border-radius: 5px;
+	color: color('white');
+	cursor: pointer;
+	z-index: 1;
+	box-shadow: 1px 1px 3px color('grey');
+
+	&:before {
+		@include fontSizeREM(30);
+		@include prefix(transform, translate3d(-50%, -50%, 0));
+		content: icon('fa-var-chevron-down');
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -2px 0 0;
+	}
+}
+
 // component class selector
 .#{$component} {
 	@extend %#{$component};
