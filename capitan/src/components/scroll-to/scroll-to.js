@@ -45,7 +45,8 @@ Capitan.Component.scrollTo = function ($) {
 			active = _.defaults.pluginOptions.classes.isActive,
 			hidden = _.defaults.pluginOptions.classes.isHidden;
 
-			//console.log('currY:' +  _.getPosition().currY, 'posY:' + _.getPosition().posY);
+			console.log('currY:' +  _.getPosition().currY, 'posY:' + _.getPosition().posY);
+
 
 			if ( _.getPosition().currY > _.getPosition().posY) {
 				$(obj).removeClass(hidden);
@@ -67,7 +68,7 @@ Capitan.Component.scrollTo = function ($) {
 		var $this = $('body'),
 			stat = $(_.defaults.pluginOptions.callbacks.active),
 			posY = $(_.defaults.componentSelector).position().top,
-			currY = $this.scrollTop() + posY;
+			currY = $this.position().top + posY;
 
 		var result = {
 			'currY': currY,
