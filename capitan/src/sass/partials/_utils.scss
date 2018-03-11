@@ -375,13 +375,11 @@ $sizes: (
 	}
 	&-color-blue {
 		min-height: 50vh;
-		background-color: color('blue');
-		opacity: .2;
+		background-color: color('blue-light');
 	}
 	&-color-orange {
 		min-height: 50vh;
-		background-color: color('orange');
-		opacity: .2;
+		background-color: color('orange-light');
 	}
 }
 
