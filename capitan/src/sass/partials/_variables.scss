@@ -26,8 +26,13 @@ $body-font-size-px: 16;
 $body-font-size: percentage(($body-font-size-px / $base-em) * 100 / 100); // in percent
 
 /* Font Style */
-$ff-regular: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
+$ff-regular: 'Khula', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
+$ff-headline: 'Abril Fatface', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', cursive;
 $ff-icon: iconfont !default;
+
+$font-weight-regular: 400;
+$font-weight-medium: 600;
+$font-weight-bold: 800;
 
 
 /* ==========================================================================
@@ -41,7 +46,8 @@ $featurephone: 320;
 $smartphone: 480;
 $tablet: 768;
 $desktop: 992;
-$retina: 1200;
+$retina: 1440;
+$highres: 1920;
 
 /* breakpoints@> */
 
@@ -61,13 +67,19 @@ $grid-gutter-width: 30px !default;
 // Gets divided in half for the left and right.
 $grid-gutter-width-half: $grid-gutter-width / 2;
 
+// Header Offset
+$header-offset: 109;
+$header-mobile-offset: 50;
+
+
 // map for getBreakpointList() function
 $js-breakpoints: (
 'xs': $featurephone,
 'sm': $smartphone,
 'md': $tablet,
 'lg': $desktop,
-'xl': $retina
+'xl': $retina,
+'xxl': $highres
 );
 
 // map for bootstrap mixins
@@ -76,7 +88,8 @@ $grid-breakpoints: (
 'sm': $smartphone + px,
 'md': $tablet + px,
 'lg': $desktop + px,
-'xl': $retina + px
+'xl': $retina + px,
+'xxl': $highres + px
 ) !default;
 
 // map for respondMin/respondMax mixin
@@ -86,10 +99,12 @@ $breakpoints: (
 'min-md': pxToEm($tablet),
 'min-lg': pxToEm($desktop),
 'min-xl': pxToEm($retina),
+'min-xxl': pxToEm($highres),
 'max-xs': pxToEm($smartphone - 1),
 'max-sm': pxToEm($tablet - 1),
 'max-md': pxToEm($desktop - 1),
-'max-lg': pxToEm($retina - 1)
+'max-lg': pxToEm($retina - 1),
+'max-xl': pxToEm($highres - 1)
 );
 
 
@@ -104,10 +119,13 @@ $colors: (
 'grey': #666,
 'grey-dark': #333,
 'grey-light': #ccc,
+'grey-lighter': #e5e5e5,
 'grey-lightest': #fafafa,
 'placeholder': #999,
 'ci': #c00,
 'ci-hover': #a00,
+'blue': #5ca0a0,
+'orange': #fc780c,
 'error': #9e1726,
 'success': #10B044,
 'warning': #f0ad4e,
@@ -908,7 +926,7 @@ fa-var-yen: '\f157',
 fa-var-yoast: '\f2b1',
 fa-var-youtube: '\f167',
 fa-var-youtube-play: '\f16a',
-fa-var-youtube-square: '\f166'
+ fa-var-youtube-square: '\f166'
 );
 
 /* icons@> */

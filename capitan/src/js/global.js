@@ -90,7 +90,9 @@ basket.require(
 						Capitan.Vars.folderPath + 'js/util/set-breakpoints.js',
 						Capitan.Vars.folderPath + 'js/handle/set-event-class.js',
 						Capitan.Vars.folderPath + 'js/handle/smooth-scroll.js',
-						Capitan.Vars.folderPath + 'js/handle/resize-handler.js'
+						Capitan.Vars.folderPath + 'js/handle/resize-handler.js',
+						Capitan.Vars.folderPath + 'components/header/header.js'
+
 						// bundle@>
 					],
 					callback: [
@@ -189,6 +191,22 @@ basket.require(
 						Capitan.Vars.folderPath + 'js/libs/vendor/muuri/muuri.min.js',
 						Capitan.Vars.folderPath + 'components/muuri/muuri.js',
 						Capitan.Vars.folderPath + 'components/muuri/muuri.css'
+					],
+					unique: '<@unique@>'
+				},
+				{
+					condition: $('.instagram'),
+					fetch: [
+						Capitan.Vars.folderPath + 'components/instagram/instagram.css',
+						Capitan.Vars.folderPath + 'components/instagram/instagram.js'
+					],
+					unique: '<@unique@>'
+				},
+				{
+					condition: $('.meta-nav, .nav-main'),
+					fetch: [
+						Capitan.Vars.folderPath + 'components/meta-nav/meta-nav.css',
+						Capitan.Vars.folderPath + 'components/nav-main/nav-main.js'
 					],
 					unique: '<@unique@>'
 				}// <@newComponent@>

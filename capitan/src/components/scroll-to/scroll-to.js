@@ -20,7 +20,13 @@ Capitan.Component.scrollTo = function ($) {
 		defaults: {
 			componentSelector: '.scroll-to',
 			pluginOptions: {
-				selectors: {},
+				selectors: {
+					up: '.scroll-to--up',
+					down: '.scroll-to--down',
+					footer: 'footer',
+					footerHide: 'footer--hide',
+					footerShow: 'footer--show'
+				},
 				classes: {
 					isActive: 'is-active',
 					isHidden: 'is-hidden'
@@ -41,19 +47,39 @@ Capitan.Component.scrollTo = function ($) {
 	 */
 	_.bindEvents = function (options) {
 		Capitan.Vars.$window.on('scroll', function (e) {
-			var	obj = $(_.defaults.componentSelector),
+			var	$obj = $(_.defaults.componentSelector),
 			active = _.defaults.pluginOptions.classes.isActive,
-			hidden = _.defaults.pluginOptions.classes.isHidden;
+			hidden = _.defaults.pluginOptions.classes.isHidden,
+			$arrowUp = $(_.defaults.pluginOptions.selectors.up),
+			$arrowDown = $(_.defaults.pluginOptions.selectors.down),
+			$footer = $(_.defaults.pluginOptions.selectors.footer),
+			footerHide = _.defaults.pluginOptions.selectors.footerHide,
+			footerShow = _.defaults.pluginOptions.selectors.footerShow;
 
 			console.log('currY:' +  _.getPosition().currY, 'posY:' + _.getPosition().posY);
 
-
 			if ( _.getPosition().currY > _.getPosition().posY) {
-				$(obj).removeClass(hidden);
-				$(obj).addClass(active);
-			} else {
-				$(obj).addClass(hidden);
-				$(obj).removeClass(active);
+				if ( _.getPosition().currY > 1144) {
+					$($arrowDown).removeClass(active);
+					$($arrowDown).addClass(hidden);
+				}
+				else {
+					$($arrowDown).removeClass(hidden);
+					$($arrowDown).addClass(active);
+				}
+
+				$($arrowUp).removeClass(hidden);
+				//$($arrowUp).addClass(active);
+
+				$($footer).removeClass(footerShow);
+				$($footer).addClass(footerHide);
+			}
+			else {
+				$($arrowUp).removeClass(active);
+				$($arrowUp).addClass(hidden);
+
+				$($footer).removeClass(footerHide);
+				$($footer).addClass(footerShow);
 			}
 		});
 	};

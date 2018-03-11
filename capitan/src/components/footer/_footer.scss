@@ -19,7 +19,34 @@ $component: 'footer';
 
 // block
 %#{$component} {
-	@include clearfix();
+	@include prefix(transition, 'bottom 200ms ease-in .3s');
+	max-width: 100%;
+	bottom: 0;
+	right: 0;
+	left: 0;
+
+	@include respondMin(point('min-lg')) {
+		right: 100px;
+		left: inherit;
+	}
+
+	ul {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+    justify-content: center;
+		padding: 0;
+	}
+
+	li, li > a  {
+		@include fontSizeREM(15);
+		height: 29px;
+	}
+
+	li {
+		padding: 0 8px;
+	}
 }
 
 
@@ -27,6 +54,18 @@ $component: 'footer';
 
 
 // modifier
+.#{$component}--hide {
+	@include respondMin(point('min-md')) {
+		position: fixed;
+		bottom: -63px;
+	}
+}
+
+.#{$component}--show {
+	@include respondMin(point('min-md')) {
+		position: fixed;
+	}
+}
 
 
 // component class selector

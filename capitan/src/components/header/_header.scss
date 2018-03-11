@@ -19,14 +19,121 @@ $component: 'header';
 
 // block
 %#{$component} {
-	@include clearfix();
+	@include prefix(transition, 'padding 500ms, top 300ms');
+	padding: $grid-gutter-width 0 17px;
+	border-bottom: solid 3px color('black');
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: auto;
+	left: 0;
+	background-color: color('white');
+	z-index: 1;
+
+	@include respondMin(point('min-md')) {
+		position: fixed;
+		top: 0;
+		border-bottom: solid 3px color('white');
+	}
+
+	ul {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&.#{$component}--show {
+		@include respondMax(point('max-sm')) {
+			top: 0;
+		}
+	}
+
+	&.#{$component}--hide {
+		@include respondMax(point('max-sm')) {
+			top: -152px;
+		}
+
+		@include respondMin(480px) {
+			top: -139px;
+		}
+		@include respondMin(point('min-md')) {
+			top: 0;
+		}
+	}
 }
 
 
 // element
+.#{$component}-container {
+	@extend .container;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+}
 
+.#{$component}-logo {
+	@include prefix(transition, 'transform 500ms');
+	transform: scale(1);
+	margin: 0 0 10px;
+
+	@include respondMin(point('min-sm')) {
+		margin: -10px 0 7px;
+	}
+
+	@include respondMin(point('min-md')) {
+		margin: -7px 20px 0;
+	}
+}
+
+.#{$component}__close {
+	display: none;
+
+	@include respondMax(point('max-sm')) {
+		@include fontSizeREM(15);
+		width: 70px;
+		height: 23px;
+		background-color: color('white');
+		display: inline-block;
+		padding: 1px 5px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		cursor: pointer;
+		z-index: 2;
+
+		&:before {
+			@include fontSizeREM(20);
+		}
+	}
+}
 
 // modifier
+.is-header-sticky {
+	.#{$component} {
+		padding: 0;
+
+		@include respondMin(point('min-sm')) {
+			padding: 10px 0 0;
+		}
+
+		@include respondMin(point('min-lg')) {
+			padding: 10px 0 0 0;
+		}
+
+		&-logo {
+			transform: scale(0.65);
+			transform-origin: 50%;
+		}
+	}
+}
 
 
 // component class selector

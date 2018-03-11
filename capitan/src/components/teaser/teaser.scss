@@ -95,6 +95,10 @@ $component: 'teaser';
 		color: color('white');
 		box-shadow: 0px 0px 10px #000;
 		overflow: auto;
+
+		.#{$component}__content {
+			background: none;
+		}
 	}
 
 	&.flipped {

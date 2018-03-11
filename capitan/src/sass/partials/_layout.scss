@@ -35,10 +35,23 @@ body::before {
 /* stylelint-disable */
 main {
 	@extend .container;	// extend container class from bootstrap _grid.scss partial
-	@include clearfix();
+
+	@include respondMax(point('max-sm')) {
+		padding-top: $header-mobile-offset + px;
+	}
+
+	@include respondMin(point('min-xl')) {
+		min-width: 100% !important;
+		max-width: 100% !important;
+	}
 }
 /* stylelint-enable */
 
+.section {
+	padding-top: $header-offset + px;
+	margin-left: -15px;
+  margin-right: -15px;
+}
 
 /* ==========================================================================
    Grid overrides
@@ -46,6 +59,7 @@ main {
 
 // Container widths
 .container {
+	//@extend .container;	// extend container class from bootstrap _grid.scss partial
 	min-width: ($container-min-widths / $body-font-size-px) + em;
 	max-width: ($container-max-widths / $body-font-size-px) + em;
 }

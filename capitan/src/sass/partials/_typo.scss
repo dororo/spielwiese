@@ -14,4 +14,160 @@
 /* ==========================================================================
    Webfonts
    ========================================================================== */
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Khula:400,800');
 
+%regular {
+   @include font($ff-regular);
+}
+
+%headline {
+   @include font($ff-headline);
+}
+
+
+
+/* ==========================================================================
+  Headings
+  ========================================================================== */
+h1, .util-h1,
+h2, .util-h2,
+h3, .util-h3,
+h4, .util-h4,
+h5, .util-h5,
+h6, .util-h6 {
+   color: color('black');
+   hyphens: auto;
+   margin-top: 0;
+
+   @media print {
+       color: color('black') !important;
+       page-break-inside: avoid;
+       page-break-after: avoid;
+   }
+}
+
+h1,
+.util-h1 {
+   @extend %headline;
+   @include fontSizeREM(44);
+   font-weight: $font-weight-regular;
+   line-height: 54px;
+   margin-bottom: 30px;
+}
+
+h2,
+.util-h2 {
+   @extend %headline;
+   @include fontSizeREM(38);
+   font-weight: $font-weight-regular;
+   line-height: 50px;
+   margin-bottom: 30px;
+}
+
+h3,
+.util-h3 {
+   @extend %headline;
+   @include fontSizeREM(34);
+   font-weight: $font-weight-regular;
+   line-height: 45px;
+   margin-bottom: 30px;
+}
+
+h4,
+.util-h4 {
+   @extend %headline;
+   @include fontSizeREM(28);
+   font-weight: $font-weight-regular;
+   line-height: 38px;
+   margin-bottom: 30px;
+}
+
+h5,
+.util-h5 {
+   @extend %regular;
+   @include fontSizeREM(34);
+   font-weight: $font-weight-regular;
+   line-height: 34px;
+   margin-bottom: 20px;
+}
+
+h6,
+.util-h6 {
+   @extend %regular;
+   @include fontSizeREM(28);
+   font-weight: $font-weight-regular;
+   line-height: 33px;
+   margin-bottom: 20px;
+}
+
+ /* ==========================================================================
+    Inline Elements
+    ========================================================================== */
+ a,
+ p,
+ strong,
+ ul,
+ ol,
+ span,
+ th,
+ td,
+ figcaption,
+ input,
+ textarea,
+ select {
+     @extend %regular;
+     @include fontSizeREM(17);
+     line-height: 26px;
+
+     .header &,
+     .footer__top & {
+         font-size: inherit;
+     }
+
+     @media print {
+         font-size: 12pt;
+     }
+ }
+
+ p {
+     color: color('black');
+     margin-top: 0;
+     margin-bottom: $grid-gutter-width;
+
+     &.subline {
+         @include fontSizeREM(20);
+         text-align: center;
+         line-height: 30px;
+         margin: 0 auto;
+         margin-bottom: 30px;
+     }
+ }
+
+ b,
+ strong {
+     @extend %regular;
+     font-weight: $font-weight-medium;
+ }
+
+ small {
+     @extend %regular;
+
+     &,
+     strong {
+         @include fontSizeREM(14);
+         color: color('grey');
+     }
+ }
+
+ a {
+     text-decoration: none;
+     color: color('black');
+
+     &:focus {
+         outline: none;
+     }
+
+     &:visited:not(.btn) {
+         color: color('black');
+     }
+ }

@@ -15,11 +15,11 @@ $component: 'scroll-to';
 // block
 %#{$component} {
 	@include font($ff-icon);
-	@include prefix(transition, opacity .5s ease-in .3s);
+	@include prefix(transition, 'opacity .5s ease-in .3s, visibility .5s ease-in-out .3s');
 
 	position: fixed;
-	bottom: 90px;
-	right: $grid-gutter-width;
+	bottom: 160px;
+	right: 10px;
 	height: 50px;
 	width: 50px;
 	background: color('ci');
@@ -28,6 +28,11 @@ $component: 'scroll-to';
 	cursor: pointer;
 	z-index: 1;
 	box-shadow: 1px 1px 3px color('grey');
+
+	@include respondMin(point('min-md')){
+		bottom: 90px;
+		right: $grid-gutter-width;
+	}
 
 	&:before {
 		@include fontSizeREM(30);
@@ -59,8 +64,8 @@ $component: 'scroll-to';
 // modifier
 .#{$component}--down {
 	position: fixed;
-	bottom: 26px;
-	right: $grid-gutter-width;
+	bottom: 100px;
+	right: 10px;
 	height: 50px;
 	width: 50px;
 	background: color('ci');
@@ -69,6 +74,11 @@ $component: 'scroll-to';
 	cursor: pointer;
 	z-index: 1;
 	box-shadow: 1px 1px 3px color('grey');
+
+	@include respondMin(point('min-md')){
+		bottom: 26px;
+		right: $grid-gutter-width;
+	}
 
 	&:before {
 		@include fontSizeREM(30);

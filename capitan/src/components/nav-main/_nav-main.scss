@@ -19,7 +19,36 @@ $component: 'nav-main';
 
 // block
 %#{$component} {
-	@include clearfix();
+
+	ul li + li {
+		margin: 0 3px;
+	}
+
+	a {
+		@include prefix(transition, 'border-left 500ms, opacity 700ms, background-color ease-in 300ms, font-size 300ms');
+		@include fontSizeREM(15);
+		text-decoration: none;
+		padding: 6px 10px 1px;
+		background-color: color('white');
+		border-left: solid 0px color('white');
+
+		@include respondMin(560px) {
+			@include fontSizeREM(17);
+		}
+
+		&:hover {
+			@include respondMin(point('min-md')) {
+				@include fontSizeREM(16);
+				background-color: color('grey-lighter');
+				border-left: solid 3px color('grey-dark');
+				opacity: .7;
+
+				@include respondMin(560px) {
+					@include fontSizeREM(19);
+				}
+			}
+		}
+	}
 }
 
 
@@ -27,7 +56,17 @@ $component: 'nav-main';
 
 
 // modifier
+.is-header-sticky {
+	.#{$component} {
+		a {
+			@include fontSizeREM(15);
 
+			&:hover {
+				@include fontSizeREM(16);
+			}
+		}
+	}
+}
 
 // component class selector
 .#{$component} {
