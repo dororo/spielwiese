@@ -19,11 +19,12 @@ $component: 'footer';
 
 // block
 %#{$component} {
-	@include prefix(transition, 'bottom 200ms ease-in .3s');
+	@include prefix(transition, 'bottom 200ms ease-in .3s, opacity 100ms 350ms');
 	max-width: 100%;
 	bottom: 0;
 	right: 0;
 	left: 0;
+	opacity: 1;
 
 	@include respondMin(point('min-lg')) {
 		right: 100px;
@@ -58,12 +59,14 @@ $component: 'footer';
 	@include respondMin(point('min-md')) {
 		position: fixed;
 		bottom: -63px;
+		opacity: 0;
 	}
 }
 
 .#{$component}--show {
 	@include respondMin(point('min-md')) {
 		position: fixed;
+		opacity: 1;
 	}
 }
 

@@ -335,12 +335,12 @@ $sizes: (
 }
 
 .util-section-bg {
-	min-height: 100vh;
+	min-height: 50vh;
 	background-size: cover;
 	background-position: center;
 
-	@include respondMin(point('min-sm')) {
-		min-height: 100vh; // subtract footer height
+	@include respondMin(point('min-md')) {
+		min-height: 100vh;
 		background-position: center;
 	}
 
@@ -351,7 +351,8 @@ $sizes: (
 
 	main > &:first-of-type {
 		@include respondMax(point('max-sm')) {
-			margin-top: -25px;
+			min-height: 50vh;
+			margin-top: -50px;
 			padding-top: $header-mobile-offset + px;
 		}
 	}

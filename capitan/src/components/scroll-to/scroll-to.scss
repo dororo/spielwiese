@@ -11,6 +11,7 @@
 @import '../../sass/partials/functions';
 @import '../../sass/partials/variables';
 @import '../../sass/partials/mixins';
+
 $component: 'scroll-to';
 // block
 %#{$component} {
@@ -18,19 +19,19 @@ $component: 'scroll-to';
 	@include prefix(transition, 'opacity .5s ease-in .3s, visibility .5s ease-in-out .3s');
 
 	position: fixed;
-	bottom: 160px;
+	bottom: 82px;
 	right: 10px;
 	height: 50px;
 	width: 50px;
-	background: color('ci');
+	background: rgba(255,255,255,.5);
+	border: solid 1px color('grey-dark');
 	border-radius: 5px;
-	color: color('white');
+	color: color('black');
 	cursor: pointer;
 	z-index: 1;
-	box-shadow: 1px 1px 3px color('grey');
+	//box-shadow: 1px 1px 2px color('grey');
 
 	@include respondMin(point('min-md')){
-		bottom: 90px;
 		right: $grid-gutter-width;
 	}
 
@@ -45,7 +46,7 @@ $component: 'scroll-to';
 	}
 
 	&:hover {
-		background: color('ci-hover');
+		background: color('white');
 	}
 
 	&.is-active {
@@ -64,19 +65,19 @@ $component: 'scroll-to';
 // modifier
 .#{$component}--down {
 	position: fixed;
-	bottom: 100px;
+	bottom: 26px;
 	right: 10px;
 	height: 50px;
 	width: 50px;
-	background: color('ci');
+	background: rgba(255,255,255,.5);
+	border: solid 1px color('grey-dark');
 	border-radius: 5px;
-	color: color('white');
+	color: color('black');
 	cursor: pointer;
 	z-index: 1;
-	box-shadow: 1px 1px 3px color('grey');
+	//box-shadow: 1px 1px 2px color('grey');
 
 	@include respondMin(point('min-md')){
-		bottom: 26px;
 		right: $grid-gutter-width;
 	}
 
