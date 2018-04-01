@@ -95,6 +95,6 @@ dist/robots.txt
 dist/favicon.ico
 dist/components/
 dist/css/
-dist/img/
+!dist/img/*
 dist/js/
 !dist/fonts/*

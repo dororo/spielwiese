@@ -56,10 +56,10 @@ Capitan.Component.scrollTo = function ($) {
 			footerHide = _.defaults.pluginOptions.selectors.footerHide,
 			footerShow = _.defaults.pluginOptions.selectors.footerShow;
 
-			console.log('currY:' +  _.getPosition().currY, 'posY:' + _.getPosition().posY);
+			//console.log('currY:' +  _.getPosition().currY, 'posY:' + _.getPosition().posY);
 
 			if ( _.getPosition().currY > _.getPosition().posY) {
-				if ( _.getPosition().currY > 1144) {
+				if ( _.getPosition().currY > Capitan.Vars.$body.outerHeight() - ($('.stage').outerHeight() / 2)) {
 					$($arrowDown).removeClass(active);
 					$($arrowDown).addClass(hidden);
 				}

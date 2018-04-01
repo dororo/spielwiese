@@ -334,6 +334,13 @@ $sizes: (
 	}
 }
 
+.util-container-tight {
+	@include respondMin(point('min-sm')) {
+		padding-right: 15%;
+		padding-left: 15%;
+	}
+}
+
 .util-section-bg {
 	min-height: 50vh;
 	background-size: cover;
@@ -346,7 +353,7 @@ $sizes: (
 
 	@include respondMin(point('min-xl')) {
 		min-height: calc(100vh - 63px); // subtract footer height
-		background-position: center calc(50% - -63px);
+		//background-position: center calc(50% - -63px);
 	}
 
 	main > &:first-of-type {
@@ -363,7 +370,7 @@ $sizes: (
 	}
 	&-streetart {
 		//@include prefix(filter, 'blur(10px)');
-		background-image: url($folder-path + 'img/jpg/streetart.jpg');
+		background-image: url($folder-path + 'img/jpg/streetart2.jpg');
 	}
 	&-desk {
 		background-image: url($folder-path + 'img/svg/ideadesk.svg');
@@ -381,6 +388,45 @@ $sizes: (
 	&-color-orange {
 		min-height: 50vh;
 		background-color: color('orange-light');
+	}
+}
+
+.util-text-color {
+	&-red {
+		color: color('ci') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-red-light {
+		color: color('ci-hover') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-blue {
+		color: color('blue') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-blue-dark {
+		color: color('blue-dark') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-orange {
+		color: color('orange') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-blue-light {
+		color: color('blue-light') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-brown {
+		color: color('brown') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-brown-light {
+		color: color('brown-light') !important;
+		text-shadow: 2px 2px 3px #555;
+	}
+	&-orange-light {
+		color: color('orange-light') !important;
+		text-shadow: 2px 2px 3px #555;
 	}
 }
 

@@ -27,9 +27,11 @@ $body-font-size: percentage(($body-font-size-px / $base-em) * 100 / 100); // in 
 
 /* Font Style */
 $ff-regular: 'Khula', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
-$ff-headline: 'Abril Fatface', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', cursive;
+$ff-cursive: 'Cormorant Garamond', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', cursive !default;
+$ff-headline: 'Abril Fatface', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
 $ff-icon: iconfont !default;
 
+$font-weight-light: 200;
 $font-weight-regular: 400;
 $font-weight-medium: 600;
 $font-weight-bold: 800;
@@ -126,8 +128,11 @@ $colors: (
 'ci-hover': #a00,
 'blue': #5ca0a0,
 'blue-light': #c2e0e0,
+'blue-dark': #0d2d49,
 'orange': #fc780c,
 'orange-light': #e4d4c5,
+'brown': #272119,
+'brown-light': #e0c8ad,
 'error': #9e1726,
 'success': #10B044,
 'warning': #f0ad4e,

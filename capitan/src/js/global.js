@@ -84,9 +84,11 @@ basket.require(
 						Capitan.Vars.folderPath + 'js/util/inject-smartresize.js',
 						Capitan.Vars.folderPath + 'js/function/assert-breakpoint.js',
 						Capitan.Vars.folderPath + 'js/function/get-breakpoint.js',
+						Capitan.Vars.folderPath + 'js/function/get-browser-version.js',
 						Capitan.Vars.folderPath + 'js/function/get-orientation.js',
 						Capitan.Vars.folderPath + 'js/function/get-computed-style.js',
 						Capitan.Vars.folderPath + 'js/function/check-viewport.js',
+						Capitan.Vars.folderPath + 'js/function/get-viewport.js',
 						Capitan.Vars.folderPath + 'js/util/set-breakpoints.js',
 						Capitan.Vars.folderPath + 'js/handle/set-event-class.js',
 						Capitan.Vars.folderPath + 'js/handle/smooth-scroll.js',
@@ -207,6 +209,22 @@ basket.require(
 					fetch: [
 						Capitan.Vars.folderPath + 'components/meta-nav/meta-nav.css',
 						Capitan.Vars.folderPath + 'components/nav-main/nav-main.js'
+					],
+					unique: '<@unique@>'
+				},
+				{
+					condition: $('.stage'),
+					fetch: [
+						Capitan.Vars.folderPath + 'components/stage/stage.css'
+					],
+					unique: '<@unique@>'
+				},
+				{
+					condition: $('.slick-slider'),
+					fetch: [
+						Capitan.Vars.folderPath + 'components/slick-slider/slick-slider.css',
+						Capitan.Vars.folderPath + 'js/libs/vendor/slick-slider/slick.min.js',
+						Capitan.Vars.folderPath + 'components/slick-slider/slick-slider.js'
 					],
 					unique: '<@unique@>'
 				}// <@newComponent@>
