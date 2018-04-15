@@ -18,7 +18,9 @@ Capitan.Component.header = (function($) {
             },
             selectors: {},
             classes: {
-                stickyHeaderModifier: 'is-header-sticky'
+                stickyHeaderModifier: 'is-header-sticky',
+                hide: 'header--hide',
+                show: 'header--show'
             },
             settings: {}
         };
@@ -41,7 +43,7 @@ Capitan.Component.header = (function($) {
         this._name = this._defaults.compName;
 
         this.init();
-    }
+    };
 
     /**
     * toggle sticky header
@@ -71,18 +73,32 @@ Capitan.Component.header = (function($) {
             $(window).on('scroll', function() {
                 var currentPos = $(this).scrollTop();
 
-                if (currentPos > 10) {
+                if (currentPos > ($('.stage').outerHeight() / 2)) {
                     _.toggleStickyHeaderClass('add');
-                } else {
+                }
+                else {
                     _.toggleStickyHeaderClass('remove');
                 }
+
             });
         }
     });
 
 	_.bindingEvents = function () {
-		Capitan.Vars.$body.on('change', _.selectors, function() {
+		Capitan.Vars.$window.on('scroll', function() {
+      var scrollTimer = null;
 
+      // Check for timeout callback of scroll Event
+      if (scrollTimer !== null) {
+        clearTimeout(scrollTimer);
+      }
+
+      // no scroll event triggered after 2s - null- scroll end, then fire function
+      scrollTimer = setTimeout( function () {
+        if (Capitan.Vars.$body.hasClass(_.classes.stickyHeaderModifier)) {
+          _.toggleStickyHeaderClass('remove');
+        }
+      }, 2000);
 		});
 	};
 
@@ -103,7 +119,7 @@ Capitan.Component.header = (function($) {
           return console.error('Capitan.Component.header | componentSelector needed!');
       }
 
-      //_.bindingEvents();
+      _.bindingEvents();
 
       //get component elements in context (whole document or just a fraction eg. ajax loaded content)
       componentElements = $(initOptions.componentSelector, context || document);

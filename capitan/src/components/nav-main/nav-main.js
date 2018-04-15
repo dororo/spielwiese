@@ -10,12 +10,16 @@ Capitan.Component.mainMenu = function ($) {
       componentSelector: '.header',
       pluginOptions: {
         selectors: {
+          navItems: '.nav-main > ul',
           element: 'header',
           trigger: '.header__close',
-          hide: 'header--hide',
-          show: 'header--show',
           iconClose: 'util-icon--fa-var-close',
           iconBurger: 'util-icon--fa-var-bars'
+        },
+        classes: {
+          isCurrent: 'is-current',
+          hide: 'header--hide',
+          show: 'header--show'
         }
       }
     }
@@ -24,31 +28,91 @@ Capitan.Component.mainMenu = function ($) {
   _.bindEvents = function () {
     var o =  _.defaults.pluginOptions;
 
-    Capitan.Vars.$doc.on('click', _.defaults.pluginOptions.selectors.trigger, function (e) {
+    Capitan.Vars.$doc.on('click touchend', o.selectors.trigger, _.defaults.componentSelector, function (e) {
       e.preventDefault();
+      _.toggleMobileHeader($(this));
+    });
 
-      _.toggleMobileHeader();
+    Capitan.Vars.$window.on('scroll', function (e) {
+      e.preventDefault();
+      var $target = $(e.target);
+
+      _.closeAll($target, $target.find(o.selectors.trigger));
+    });
+
+    // Desktop Navigation Eventlistener
+
+    Capitan.Vars.$doc.on('click', o.selectors.navItems, _.defaults.componentSelector, function (e) {
+      e.preventDefault();
+      var $target = $(e.target);
+      // didaktik: target vs this
+      // console.log('target: ',$target);
+      // console.log('this: ',$(this));
+
+      _.toggleNavigation($target, $(this));
     });
   };
 
-  _.toggleMobileHeader = function () {
-    var o =  _.defaults.pluginOptions;
+  /**
+  * Only Toggle current Marker, for now
+  * @param $target should be a
+  * @param $this should be ul
+  **/
+  _.toggleNavigation = function ($target, $this) {
+    var o =  _.defaults.pluginOptions,
+      to = o.classes,
+      isCurrent = to.isCurrent;
 
-    if (!$(o.selectors.element).hasClass(o.selectors.show)) {
-      $(o.selectors.element).removeClass(o.selectors.hide);
-      $(o.selectors.element).addClass(o.selectors.show);
+      if (!$target.hasClass(isCurrent) || $target.hasClass(isCurrent)) {
+        $this.find('.is-current').removeClass(isCurrent);
+        $target.addClass(isCurrent);
+      }
+      else {
+        $target.removeClass(isCurrent);
+      }
+  };
 
-      $(o.selectors.trigger).removeClass(o.selectors.iconBurger);
-      $(o.selectors.trigger).addClass(o.selectors.iconClose).text(' Close');
+  /**
+  * Mobile Header Toggle
+  * @param $this should be header__close
+  **/
+  _.toggleMobileHeader = function ($this) {
+    var o =  _.defaults.pluginOptions,
+      to = o.classes;
+
+    if (!$(o.selectors.element).hasClass(to.show)) {
+      $(o.selectors.element).removeClass(to.hide);
+      $(o.selectors.element).addClass(to.show);
+
+      $this.removeClass(o.selectors.iconBurger);
+      $this.addClass(o.selectors.iconClose).text(' Close');
     }
     else {
-      $(o.selectors.element).removeClass(o.selectors.show);
-      $(o.selectors.element).addClass(o.selectors.hide);
-
-      $(o.selectors.trigger).removeClass(o.selectors.iconClose);
-      $(o.selectors.trigger).addClass(o.selectors.iconBurger).text(' Menu');
+      _.closeAll($(o.selectors.element), $this);
     }
-  }
+  };
+
+  /**
+  * Set Navigation back to inital state
+  * @param $target should be header
+  * @param $this should be header__close
+  **/
+  _.closeAll = function ($target, $this) {
+    var o =  _.defaults.pluginOptions,
+      to = o.classes;
+
+      if (!$target.hasClass(o.selectors.element)) {
+        $(o.selectors.element).removeClass(to.show);
+        $(o.selectors.element).addClass(to.hide);
+      }
+      else {
+        $target.removeClass(to.show);
+        $target.addClass(to.hide);
+      }
+
+      $this.removeClass(o.selectors.iconClose);
+      $this.addClass(o.selectors.iconBurger).text(' Menu');
+  };
 
   /**
    * Init component

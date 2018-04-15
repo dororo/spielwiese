@@ -92,7 +92,7 @@ $component: 'slick-slider';
 
 	&:after {
 		@include font($ff-icon);
-		content: icon('fa-var-chevron-left');
+		content: icon('fa-var-caret-left');
 		font-size: pxToEm(150);
 		margin-left: 50px;
 		color: color('white');
@@ -104,7 +104,7 @@ $component: 'slick-slider';
 
 	&:before {
 		@include font($ff-icon);
-		content: icon('fa-var-chevron-right');
+		content: icon('fa-var-caret-right');
 		font-size: pxToEm(150);
 		margin-right: 50px;
 		color: color('white');

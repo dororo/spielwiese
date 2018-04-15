@@ -19,7 +19,7 @@ $component: 'header';
 
 // block
 %#{$component} {
-	@include prefix(transition, 'padding 500ms, top 300ms');
+	@include prefix(transition, 'padding 500ms ease-out, top 300ms ease-out');
 	padding: $grid-gutter-width 0 17px;
 	border-bottom: solid 3px color('black');
 	position: absolute;

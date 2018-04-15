@@ -17,7 +17,7 @@ $component: 'stage';
 	height: 184px;
 	overflow: hidden;
 	margin: auto;
-	background-color: color('blue-light');
+	background: color('blue-light');
 
 	@include respondMin(point('min-sm')) {
 		height: 276px;

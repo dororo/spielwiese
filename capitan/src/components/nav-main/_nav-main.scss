@@ -36,6 +36,17 @@ $component: 'nav-main';
 			@include fontSizeREM(17);
 		}
 
+		&:before {
+			@include font($ff-icon);
+			content: icon('fa-var-angle-right');
+		}
+
+		&:hover:before,
+		&.is-current:before {
+			@include font($ff-icon);
+			content: icon('fa-var-angle-double-right');
+		}
+
 		&:hover {
 			@include respondMin(point('min-md')) {
 				@include fontSizeREM(16);
