@@ -197,6 +197,7 @@ basket.require(
 				{
 					condition: $('.instagram'),
 					fetch: [
+						Capitan.Vars.folderPath + 'js/libs/vendor/instafeed/instafeed.min.js',
 						Capitan.Vars.folderPath + 'components/instagram/instagram.css',
 						Capitan.Vars.folderPath + 'components/instagram/instagram.js'
 					],

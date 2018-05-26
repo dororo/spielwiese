@@ -9,7 +9,9 @@ Capitan.Component.instagram = function ($) {
     defaults: {
       componentSelector: '.instagram',
       pluginOptions: {
-        clientId: 'secret',
+        userId: '5792752806',
+        clientId: 'e4bf2efd867f430b9f4a87279f00c0d1',
+        accessToken: '5792752806.e4bf2ef.29fc8631f4ae4e5b94020544be9aada7',
         clientStatus: 'Sandbox Mode',
         redirectUri: window.location,
         selectors: {
@@ -36,32 +38,37 @@ Capitan.Component.instagram = function ($) {
 
   _.callInstaApi = function () {
     var o = _.defaults.pluginOptions,
-      uri = 'https://api.instagram.com/oauth/authorize/?client_id=' + o.clientId + '&redirect_uri=' +  o.redirectUri + '&response_type=token',
-      token = '';
+      uri = 'https://api.instagram.com/oauth/authorize/?client_id=' + o.clientId + '&redirect_uri=' +  o.redirectUri + '&response_type=token';
 
-      window.open(uri);
+      //window.open(uri);
 
-      token = decodeURIComponent(window.location.search.substring(1).split("=")[0]);
-console.log(token);
-
-      _.setCookie('oauth', JSON.stringify(token), 30);
-
-      // if (decodeURIComponent(window.location.search.substring(1).split("=")[0]) === 'access_token') {
-      //   _.setCookie('oauth', JSON.stringify(token), 30);
-      // }
-
+      $.ajax({
+        method: 'GET',
+        url: uri,
+        context: document.body
+      }).done( function (response) {
+        o.accessToken = decodeURIComponent(window.location.search.substring(1).split("=")[0]);
+        _.setCookie('oauth', JSON.stringify(o.accessToken), 30);
+      });
   };
 
+  _.initPlugin = function () {
+    var o = _.defaults.pluginOptions;
 
-  /**
-  *
-  *
-  **/
-  _.getUrlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    return results[1] || 0;
+    var feed = new Instafeed({
+      get: 'user',
+      userId: o.userId,
+      clientId: o.clientId,
+      accessToken: o.accessToken,
+      resolution: 'standard_resolution',
+      template: '<a data-fancybox="lightbox" data-caption="{{caption}}" href="{{image}}" target="_blank" ><img id="{{id}}" src="{{image}}" /></a>',
+      sortBy: 'most-recent',
+      limit: 4,
+      links: false
+    });
+
+    feed.run();
   };
-
 
   /**
 	 * get cookie helper
@@ -91,7 +98,6 @@ console.log(token);
 				} else {
 					return c.substring(nameEQ.length,c.length);
 				}
-
 			}
 		}
 		return null;
@@ -150,7 +156,9 @@ console.log(token);
     //init the plugin external plugins
     //componentElements.instagram(initOptions.pluginOptions);
 
+    _.initPlugin();
     _.bindEvents();
+
   };
 
   return self;
