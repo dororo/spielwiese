@@ -27,6 +27,7 @@ $component: 'teaser';
 
 // element
 .#{$component}__media {
+	background: color('white');
 	height: 380px;
 	overflow: hidden;
 
@@ -41,7 +42,7 @@ $component: 'teaser';
 
 .#{$component}__content {
 	background: color('white');
-	min-height: 95px;
+	height: 135px;
 	overflow: hidden;
 
 	@include respondMax(point('max-md')) {

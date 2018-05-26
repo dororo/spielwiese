@@ -77,7 +77,7 @@ Capitan.Component.instagram = function ($) {
       resolution: 'standard_resolution',
       template: template,
       sortBy: 'random',
-      limit: 12,
+      limit: 24,
       links: false
     });
 
