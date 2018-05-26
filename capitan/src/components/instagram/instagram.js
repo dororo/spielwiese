@@ -57,8 +57,8 @@ Capitan.Component.instagram = function ($) {
     template = '<div class="col-xs-12 col-md-4 col-lg-4">' +
                 '<div class="teaser">' +
                 	'<div class="teaser__media">' +
-                		'<a href="{{image}}" data-fancybox="lightbox" data-caption="{{caption}}">' +
-                			'<img id="{{id}}" src="{{image}}" title="{{id}}" width="{{width}}" height="{{height}}" />' +
+                		'<a href="{{image}}" alt="{{link}}" data-fancybox="lightbox" data-caption="{{caption}}">' +
+                			'<img id="{{id}}" src="{{image}}" title="likes:{{likes}}. {{location}}" width="{{width}}" height="{{height}}" />' +
                 		'</a>' +
                 	'</div>' +
                 	'<div class="teaser__content">' +
