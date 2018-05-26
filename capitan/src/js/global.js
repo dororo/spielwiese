@@ -158,7 +158,7 @@ basket.require(
 					unique: '<@unique@>'
 				},
 				{
-					condition: $('.teaser'),
+					condition: $('.teaser, .teaser__wrapper'),
 					fetch: [
 						Capitan.Vars.folderPath + 'components/teaser/teaser.js',
 						Capitan.Vars.folderPath + 'components/teaser/teaser.css'

@@ -27,6 +27,13 @@ $component: 'teaser';
 
 // element
 .#{$component}__media {
+	height: 380px;
+	overflow: hidden;
+
+	@include respondMax(point('max-md')) {
+		height: auto;
+	}
+
 	img {
 		width: 100%;
 	}
@@ -34,18 +41,24 @@ $component: 'teaser';
 
 .#{$component}__content {
 	background: color('white');
+	min-height: 95px;
+	overflow: hidden;
+
+	@include respondMax(point('max-md')) {
+		height: auto;
+	}
 }
 
 .#{$component}__text {
-	padding: $grid-gutter-width;
+	padding: $grid-gutter-width-half $grid-gutter-width;
 
 	@include respondMax(point('max-md')) {
-		padding: $grid-gutter-width;
+		padding: $grid-gutter-width-half;
 		font-size: pxToEm(18);
 	}
 
 	@include respondMax(point('max-xs')) {
-		padding: $grid-gutter-width $grid-gutter-width-half;
+		padding: $grid-gutter-width-half;
 		font-size: pxToEm(14);
 	}
 }

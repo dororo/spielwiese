@@ -53,7 +53,21 @@ Capitan.Component.instagram = function ($) {
   };
 
   _.initPlugin = function () {
-    var o = _.defaults.pluginOptions;
+    var o = _.defaults.pluginOptions,
+    template = '<div class="col-xs-12 col-md-4 col-lg-4">' +
+                '<div class="teaser">' +
+                	'<div class="teaser__media">' +
+                		'<a href="{{image}}" data-fancybox="lightbox" data-caption="{{caption}}">' +
+                			'<img id="{{id}}" src="{{image}}" title="{{id}}" width="{{width}}" height="{{height}}" />' +
+                		'</a>' +
+                	'</div>' +
+                	'<div class="teaser__content">' +
+                		'<div class="teaser__text">' +
+                			'{{caption}}' +
+                		'</div>' +
+                	'</div>' +
+                '</div>' +
+              '</div>';
 
     var feed = new Instafeed({
       get: 'user',
@@ -61,9 +75,9 @@ Capitan.Component.instagram = function ($) {
       clientId: o.clientId,
       accessToken: o.accessToken,
       resolution: 'standard_resolution',
-      template: '<a data-fancybox="lightbox" data-caption="{{caption}}" href="{{image}}" target="_blank" ><img id="{{id}}" src="{{image}}" /></a>',
-      sortBy: 'most-recent',
-      limit: 4,
+      template: template,
+      sortBy: 'random',
+      limit: 12,
       links: false
     });
 
