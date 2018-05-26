@@ -1,0 +1,25 @@
+{{!-- views/index.hbs --}}
+
+{{#> base title="Instagram Redirect" }}
+
+	{{#*inline "main-block"}}
+	{{> header }}
+
+		<main id="main" role="main">
+
+			<section class="section util-section-bg util-section-bg-color-blue">
+				<div class="container">
+					{{> instagram }}
+				</div>
+			</section>
+			{{> scroll-to }}
+
+    </main>
+
+	{{/inline}}
+
+	{{#*inline "footer-block"}}
+	{{!-- insert footer if needed --}}
+	{{/inline}}
+
+{{/base}}

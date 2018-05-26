@@ -160,7 +160,7 @@ basket.require(
 					unique: '<@unique@>'
 				},
 				{
-					condition: $('.teaser'),
+					condition: $('.teaser, .teaser__wrapper'),
 					fetch: [
 						Capitan.Vars.folderPath + 'components/teaser/teaser.js',
 						Capitan.Vars.folderPath + 'components/teaser/teaser.css'
@@ -199,6 +199,7 @@ basket.require(
 				{
 					condition: $('.instagram'),
 					fetch: [
+						Capitan.Vars.folderPath + 'js/libs/vendor/instafeed/instafeed.min.js',
 						Capitan.Vars.folderPath + 'components/instagram/instagram.css',
 						Capitan.Vars.folderPath + 'components/instagram/instagram.js'
 					],
