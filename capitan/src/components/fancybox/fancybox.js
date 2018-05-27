@@ -21,14 +21,15 @@ var _ = {
 		componentSelector: '[data-fancybox]',
 		pluginOptions: {
 			lang: 'de',
+			loop: true,
 			toolbar: false,
 			arrows: true,
 			smallBtn: false,
 			buttons: [
-				'slideShow',
-				'fullScreen',
-				'thumbs',
-				'close'
+				//'slideShow',
+				//'fullScreen',
+				//'thumbs',
+				//'close'
 			],
 			animationEffect: 'fade',
 			animationDuration: 700,

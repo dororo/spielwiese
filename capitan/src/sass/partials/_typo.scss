@@ -154,11 +154,10 @@ h6,
      margin-bottom: $grid-gutter-width;
 
      &.subline {
-         @include fontSizeREM(20);
+         @include fontSizeREM(28);
          text-align: center;
          line-height: 30px;
-         margin: 0 auto;
-         margin-bottom: 30px;
+         margin: $grid-gutter-width auto;
      }
  }
 
@@ -239,4 +238,40 @@ cite {
      &:visited:not(.btn) {
          color: color('black');
      }
+ }
+
+ a.text-link:not(.btn) {
+   @include prefix(transition, 'color 700ms');
+   width: 100px;
+   display: block;
+   margin: 3px 8px;
+   color: color('ci');
+
+   &:visited {
+       color: color('ci');
+   }
+
+   &:after {
+     @include font($ff-icon);
+     content: icon('fa-var-angle-right');
+     padding-left: 3px;
+   }
+
+   &:hover {
+     color: color('ci-hover');
+
+     &:after {
+       content: icon('fa-var-angle-double-right');
+       animation: pulse 300ms ease-out infinite alternate;
+     }
+
+     @keyframes pulse {
+        0% {
+          padding-left: 3px;
+        }
+        100% {
+          padding-left: 7px;
+        }
+      }
+   }
  }

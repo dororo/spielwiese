@@ -43,14 +43,33 @@ $component: 'fancybox'; // block
 }
 
 .#{$component}-custom {
+	display: inline-block;
+
+	.custom-image {
+		text-align: center;
+	}
+
 	img {
-		max-width: 600px;
+		max-width: 650px;
+
+		@include respondMax(point('max-sm')) {
+			max-width: 100%;
+		}
 	}
 }
 
 .custom-caption-wrap {
+	@include respondMax(point('max-sm')) {
+		max-width: 100%;
+	}
+
 	.custom-caption {
 		padding: 20px 0;
+		max-width: 650px;
+
+		@include respondMax(point('max-sm')) {
+			max-width: auto;
+		}
 	}
 
 	button {
@@ -61,7 +80,7 @@ $component: 'fancybox'; // block
 }
 
 .#{$component}-caption-wrap {
-	bottom: -100px;
+	bottom: -500px;
 	left: 0;
 	right: 0;
 	padding: 0 30px;
@@ -81,6 +100,7 @@ $component: 'fancybox'; // block
 }
 
 .#{$component}-toolbar {
+	display: none;
 	position: absolute;
 	direction: ltr;
 	z-index: 99997;

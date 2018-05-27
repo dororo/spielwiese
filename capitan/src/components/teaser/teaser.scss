@@ -28,15 +28,30 @@ $component: 'teaser';
 // element
 .#{$component}__media {
 	background: color('white');
-	height: 380px;
+	min-height: 400px;
 	overflow: hidden;
+	position: relative;
 
 	@include respondMax(point('max-md')) {
-		height: auto;
+		min-height: 380px;
 	}
 
 	img {
-		width: 100%;
+		max-width: 135%;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+		position: absolute;
+
+		@include respondMax(point('max-md')) {
+			width: 114%;
+			max-width: 114%;
+		}
+
+		@include respondMax(point('max-xs')) {
+			width: 133%;
+			max-width: 133%;
+		}
 	}
 }
 
@@ -45,21 +60,28 @@ $component: 'teaser';
 	height: 135px;
 	overflow: hidden;
 
-	@include respondMax(point('max-md')) {
+	@include respondMax(point('max-sm')) {
 		height: auto;
 	}
 }
 
 .#{$component}__text {
-	padding: $grid-gutter-width-half $grid-gutter-width;
+	height: 100%;
+	padding: $grid-gutter-width-half 20px;
+	position: relative;
+
+	.text-link {
+		position: absolute;
+		bottom: 0;
+		left: calc(100% - 103px);
+	}
 
 	@include respondMax(point('max-md')) {
-		padding: $grid-gutter-width-half;
+		padding: $grid-gutter-width-half $grid-gutter-width-half 56px;
 		font-size: pxToEm(18);
 	}
 
 	@include respondMax(point('max-xs')) {
-		padding: $grid-gutter-width-half;
 		font-size: pxToEm(14);
 	}
 }
@@ -101,6 +123,7 @@ $component: 'teaser';
 	}
 
 	&__back {
+		height: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -111,6 +134,7 @@ $component: 'teaser';
 		overflow: auto;
 
 		.#{$component}__content {
+			height: auto;
 			background: none;
 		}
 	}
@@ -131,7 +155,6 @@ $component: 'teaser';
 		cursor: pointer;
 	}
 }
-
 
 // component class selector
 .#{$component} {

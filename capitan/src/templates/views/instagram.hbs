@@ -5,15 +5,31 @@
 	{{#*inline "main-block"}}
 	{{> header }}
 
-	{{> stage }}
+	<div class="stage">  
+    <picture>
+      <source media="(min-width: 1440px)" srcset="dist/img/jpg/dawn.jpg">
+      <source media="(min-width: 992px)" srcset="dist/img/jpg/dawn_cubic.jpg">
+      <source media="(min-width: 768px)" srcset="dist/img/jpg/dawn_long.jpg">
+      {{!-- <source type="image/webp" srcset="images/butterfly.webp"> --}}
+      <img src="dist/img/jpg/dawn_sm.jpg">
+    </picture>
+	</div>
 
 		<main id="main" role="main">
 
 			<section class="section util-section-bg util-section-bg-color-blue">
 				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-12 col-lg-12">
+							<h1 class="util-center">Hey, Du bist auf</h1>
+							<p class="subline">... keiner besonderen Instagram Seite</p>
+						</div>
+					</div>
 					{{> instagram }}
+					{{> button type="button" text="Load more Instagrams" class="btn--block instagram-load util-add-margin-y-double" }}
 				</div>
 			</section>
+
 			{{> scroll-to }}
 
     </main>
