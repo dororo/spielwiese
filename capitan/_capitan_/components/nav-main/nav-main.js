@@ -1,0 +1,9 @@
+/**
+ * Copyright brandung GmbH & Co.KG
+ * http://www.brandung.de/
+ *
+ * Date: 2019-01-12
+ * MIT License (MIT)
+ */
+
+Capitan.Component.mainMenu=function(a){var b={},c={defaults:{componentSelector:".header",pluginOptions:{selectors:{navItems:".nav-main > ul",element:"header",trigger:".header__close",iconClose:"util-icon--fa-var-close",iconBurger:"util-icon--fa-var-bars"},classes:{isCurrent:"is-current",hide:"header--hide",show:"header--show"}}}};return c.bindEvents=function(){var b=c.defaults.pluginOptions;Capitan.Vars.$doc.on("click touchend",b.selectors.trigger,c.defaults.componentSelector,function(b){b.preventDefault(),c.toggleMobileHeader(a(this))}),Capitan.Vars.$window.on("scroll",function(d){d.preventDefault();var e=a(d.target);c.closeAll(e,e.find(b.selectors.trigger))}),Capitan.Vars.$doc.on("click",b.selectors.navItems,c.defaults.componentSelector,function(b){var d=a(b.target);c.toggleNavigation(d,a(this))})},c.toggleNavigation=function(a,b){var d=c.defaults.pluginOptions,e=d.classes,f=e.isCurrent;!a.hasClass(f)||a.hasClass(f)?(b.find(".is-current").removeClass(f),a.addClass(f)):a.removeClass(f)},c.toggleMobileHeader=function(b){var d=c.defaults.pluginOptions,e=d.classes;a(d.selectors.element).hasClass(e.show)?c.closeAll(a(d.selectors.element),b):a(d.selectors.element).hasClass(e.show)||(a(d.selectors.element).removeClass(e.hide),a(d.selectors.element).addClass(e.show),b.removeClass(d.selectors.iconBurger),b.addClass(d.selectors.iconClose).text(" Close"))},c.closeAll=function(a,b){var d=c.defaults.pluginOptions,e=d.classes;a.removeClass(e.show),a.addClass(e.hide),b.removeClass(d.selectors.iconClose),b.addClass(d.selectors.iconBurger).text(" Menu")},b.init=function(b,d){var e=a.extend(!0,{},c.defaults,b);e.componentSelector&&(a(e.componentSelector,d||document),c.bindEvents())},b}(jQuery),Capitan.Component.mainMenu.init();

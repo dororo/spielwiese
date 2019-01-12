@@ -1,0 +1,1 @@
+.stage{height:184px;overflow:hidden;margin:auto;background:#c2e0e0}@media screen and (min-width:30em){.stage{height:276px}}@media screen and (min-width:48em){.stage{height:100vh}}@media screen and (min-width:62em){.stage{height:100vh}}@media screen and (min-width:90em){.stage{height:calc(100vh - 63px)}}.stage img{min-width:100%;min-height:100%}

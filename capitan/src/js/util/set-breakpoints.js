@@ -12,5 +12,5 @@
 Capitan.Util.setBreakpoints = function () {
 	'use strict';
 
-	Capitan.Vars.breakpoints = JSON.parse(Capitan.Function.getComputedStyle('body', ':before', 'content'));
+	Capitan.Vars.breakpoints = JSON.stringify(Capitan.Function.getComputedStyle('body', ':before', 'content'));
 }();

@@ -29,6 +29,8 @@ Capitan.Component.mainMenu = function ($) {
     var o =  _.defaults.pluginOptions;
 
     Capitan.Vars.$doc.on('click touchend', o.selectors.trigger, _.defaults.componentSelector, function (e) {
+      e.preventDefault();
+
       _.toggleMobileHeader($(this));
     });
 
@@ -72,44 +74,38 @@ Capitan.Component.mainMenu = function ($) {
 
   /**
   * Mobile Header Toggle
-  * @param $this should be header__close
+  * @param $trigger should be header__close
   **/
-  _.toggleMobileHeader = function ($this) {
+  _.toggleMobileHeader = function ($trigger) {
     var o =  _.defaults.pluginOptions,
       to = o.classes;
 
-    if (!$(o.selectors.element).hasClass(to.show)) {
+    if ($(o.selectors.element).hasClass(to.show)) {
+      _.closeAll($(o.selectors.element), $trigger);
+    }
+    else if (!$(o.selectors.element).hasClass(to.show)) {
       $(o.selectors.element).removeClass(to.hide);
       $(o.selectors.element).addClass(to.show);
 
-      $this.removeClass(o.selectors.iconBurger);
-      $this.addClass(o.selectors.iconClose).text(' Close');
-    }
-    else {
-      _.closeAll($(o.selectors.element), $this);
+      $trigger.removeClass(o.selectors.iconBurger);
+      $trigger.addClass(o.selectors.iconClose).text(' Close');
     }
   };
 
   /**
   * Set Navigation back to inital state
   * @param $target should be header
-  * @param $this should be header__close
+  * @param $trigger should be header__close
   **/
-  _.closeAll = function ($target, $this) {
+  _.closeAll = function ($target, $trigger) {
     var o =  _.defaults.pluginOptions,
       to = o.classes;
 
-      if (!$target.hasClass(o.selectors.element)) {
-        $(o.selectors.element).removeClass(to.show);
-        $(o.selectors.element).addClass(to.hide);
-      }
-      else {
-        $target.removeClass(to.show);
-        $target.addClass(to.hide);
-      }
+      $target.removeClass(to.show);
+      $target.addClass(to.hide);
 
-      $this.removeClass(o.selectors.iconClose);
-      $this.addClass(o.selectors.iconBurger).text(' Menu');
+      $trigger.removeClass(o.selectors.iconClose);
+      $trigger.addClass(o.selectors.iconBurger).text(' Menu');
   };
 
   /**

@@ -32,8 +32,14 @@ Capitan.Handle.smoothScroll = function () {
       		$('html, body').animate({
           	scrollTop: target.offset().top
         	}, 1000, function() {
-          	var $target = $(target);
-						//console.log($target);
+						 var $target = $(target);
+						 $target.focus();
+						 if ($target.is(":focus")) {
+							 return false;
+						 } else {
+							 $target.attr('tabindex','-1');
+							 $target.focus();
+						 };
         	});
       	};
 		};

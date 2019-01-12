@@ -1,9 +1,8 @@
 {{!-- components/nav-main --}}
 <nav class="nav-main" role="navigation">
 	<ul>
-		<li><a class="is-current" href="{{url}}"> {{name}}</a></li>
-		<li><a href="{{url}}"> {{name}}</a></li>
-		<li><a href="{{url}}"> {{name}}</a></li>
-		<li><a href="{{url}}"> {{name}}</a></li>
+		{{#each refs}}
+			<li><a class="{{#if this.current}}is-current{{else}}{{/if}}" href="{{this.url}}"> {{this.name}}</a></li>
+		{{/each}}
 	</ul>
 </nav>
