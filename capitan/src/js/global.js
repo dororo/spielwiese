@@ -129,6 +129,15 @@ basket.require(
 					unique: '<@unique@>'
 				},
 				{
+					condition: $('.meta-nav, .nav-main'),
+					fetch: [
+						Capitan.Vars.folderPath + 'components/meta-nav/meta-nav.css',
+						Capitan.Vars.folderPath + 'components/nav-main/nav-main.js',
+						Capitan.Vars.folderPath + 'components/nav-main/nav-main.css'
+					],
+					unique: '<@unique@>'
+				},
+				{
 					condition: $('.alert'),
 					fetch: [
 						Capitan.Vars.folderPath + 'components/alert/alert.css'
@@ -202,14 +211,6 @@ basket.require(
 						Capitan.Vars.folderPath + 'js/libs/vendor/instafeed/instafeed.min.js',
 						Capitan.Vars.folderPath + 'components/instagram/instagram.css',
 						Capitan.Vars.folderPath + 'components/instagram/instagram.js'
-					],
-					unique: '<@unique@>'
-				},
-				{
-					condition: $('.meta-nav, .nav-main'),
-					fetch: [
-						Capitan.Vars.folderPath + 'components/meta-nav/meta-nav.css',
-						Capitan.Vars.folderPath + 'components/nav-main/nav-main.js'
 					],
 					unique: '<@unique@>'
 				},

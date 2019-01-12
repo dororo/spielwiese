@@ -14,6 +14,10 @@
 /* ==========================================================================
    Main Navigation
    ========================================================================== */
+	 
+ @import '../../sass/partials/functions';
+ @import '../../sass/partials/variables';
+ @import '../../sass/partials/mixins';
 
 $component: 'nav-main';
 

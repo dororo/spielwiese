@@ -29,7 +29,6 @@ Capitan.Component.mainMenu = function ($) {
     var o =  _.defaults.pluginOptions;
 
     Capitan.Vars.$doc.on('click touchend', o.selectors.trigger, _.defaults.componentSelector, function (e) {
-      e.preventDefault();
       _.toggleMobileHeader($(this));
     });
 
@@ -43,7 +42,6 @@ Capitan.Component.mainMenu = function ($) {
     // Desktop Navigation Eventlistener
 
     Capitan.Vars.$doc.on('click', o.selectors.navItems, _.defaults.componentSelector, function (e) {
-      e.preventDefault();
       var $target = $(e.target);
       // didaktik: target vs this
       // console.log('target: ',$target);
